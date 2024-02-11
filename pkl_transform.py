@@ -4,6 +4,7 @@
 import subprocess
 import sys
 import argparse
+import logging
 
 def perform_pkl_transform(pkl_config_path: str, target_format: str, output_path: str):
     args = [
@@ -13,7 +14,7 @@ def perform_pkl_transform(pkl_config_path: str, target_format: str, output_path:
         target_format,
         pkl_config_path,
     ]
-    print("pkl transform args: {}".format(' '.join(args)))
+    logging.debug("pkl transform args: {}".format(' '.join(args)))
     with open(output_path, 'w') as f:
         subprocess.run(args, stdout=f)
 
