@@ -8,6 +8,7 @@ Bazel rules for Apple's configuration as code language, [pkl](https://github.com
 # Installation
 
 ```Starlark file=WORKSPACE
+# Inside your WORKSPACE file.
 load(
   "@bazel_tools//tools/build_defs/repo:git.bzl",
   "new_git_repository",
@@ -21,7 +22,8 @@ new_git_repository(
 ```
 > NOTE: The commit hash may be pointing to an older version, make sure to use an up to date hash.
 
-```
+```Starlark
+# Load the rules into your BUILD file.
 load(
   "@rules_pkl//:rules_pkl.bzl",
   "pkl_library",
