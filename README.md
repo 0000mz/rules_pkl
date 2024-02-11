@@ -5,6 +5,29 @@
 
 Bazel rules for Apple's configuration as code language, [pkl](https://github.com/apple/pkl).
 
+# Installation
+
+```Starlark file=WORKSPACE
+load(
+  "@bazel_tools//tools/build_defs/repo:git.bzl",
+  "new_git_repository",
+)
+
+new_git_repository(
+  name = "rules_pkl",
+  remote = "https://github.com/0000mz/rules_pkl.git",
+  commit = "803207a243dc85d51d0d47bd20e9ff1f702aed9e",
+)
+```
+> NOTE: The commit hash may be pointing to an older version, make sure to use an up to date hash.
+
+```
+load(
+  "@rules_pkl//:rules_pkl.bzl",
+  "pkl_library",
+  "pkl_template",
+)
+```
 # Basic Usage
 ```Starlark
 
