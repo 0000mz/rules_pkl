@@ -46,3 +46,4 @@ pkl_library(
 
 # TODOs
 - Let bazel pull in the pkl executable to be used. Currently, the user must already have pkl installed on their system for these rules to work.
+- Add rules for [language bindings](https://pkl-lang.org/main/current/language-bindings.html).
