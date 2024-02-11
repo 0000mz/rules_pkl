@@ -7,6 +7,6 @@ py_binary(
 
 pkl_library(
   name = "example",
-  format = "json",
+  formats = ["json", "yaml", "plist"],
   config = "example.pkl",
 )
