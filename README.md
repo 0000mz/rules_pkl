@@ -8,7 +8,7 @@ Bazel rules for Apple's configuration as code language, [pkl](https://github.com
 # Installation
 
 ## Prerequisite
-These rules assume you have the [pkl binary installed](https://pkl-lang.org/main/current/pkl-cli/index.html#installation) into on the system. In the future, the pkl tool will be imported and built by bazel.
+These rules assume you have the [pkl binary installed](https://pkl-lang.org/main/current/pkl-cli/index.html#installation) on the system. In the future, the pkl tool will be imported and built by bazel.
 
 ## Install
 ```Starlark file=WORKSPACE
