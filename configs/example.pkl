@@ -1,1 +1,5 @@
-hello = "World"
+name = "Example Pkl file"
+info {
+  createdBy = "Apple"
+  currentVersion = "0.25.0"
+}

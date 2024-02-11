@@ -8,10 +8,10 @@ def test_example():
 
 def test_pkl_generated_json():
   jsonfile = "example.pkl.json"
-  assert os.path.exists(jsonfile)
   assert os.path.exists(os.path.join("configs", jsonfile))
+  assert os.path.exists(os.path.join("configs", "subdir", jsonfile))
   data = None
-  with open(jsonfile, 'r') as f:
+  with open(os.path.join("configs", jsonfile), 'r') as f:
     data = json.load(f)
   
   assert data is not None
@@ -21,11 +21,11 @@ def test_pkl_generated_json():
   assert data["info"]["currentVersion"] == "0.25.0"
 
 def test_pkl_generated_plist():
-  assert os.path.exists('example.pkl.plist')
+  assert os.path.exists(os.path.join("configs", "example.pkl.plist"))
 
 def test_pkl_generated_yaml():
   # TODO: Use pyyaml to parse the contents of the yaml file.
-  assert os.path.exists('example.pkl.yaml')
+  assert os.path.exists(os.path.join("configs", "example.pkl.yaml"))
 
 if __name__ == '__main__':
   sys.exit(pytest.main(sys.argv[1:]))

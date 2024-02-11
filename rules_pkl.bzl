@@ -40,6 +40,17 @@ def _pkl_library_impl(ctx):
 
   return [DefaultInfo(files = depset(config_format_outputs))]
 
+def _pkl_template_impl(ctx):
+  pass
+
+# Rule for defining a pkl template:
+# https://pkl-lang.org/main/current/language-tutorial/03_writing_a_template.html
+# A template is meant to be defined and then plugged into a pkl_library to fill
+# out the templated segments.
+pkl_template = rule(
+  implementation = _pkl_template_impl,
+)
+
 pkl_library = rule(
   implementation = _pkl_library_impl,
   attrs = {
