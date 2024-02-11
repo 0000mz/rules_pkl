@@ -1,4 +1,7 @@
-# `bazel_rules_pkl`
+<p align="center">
+  <img src="doc/pkl-bazel-logo.png" width="40px" />
+</p>
+<h1 align="center">rules_pkl</h1>
 
 Bazel rules for Apple's configuration as code language, [pkl](https://github.com/apple/pkl).
 
