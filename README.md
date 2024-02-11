@@ -7,4 +7,3 @@ Bazel rules for Apple's configuration as code language, [pkl](https://github.com
 
 # TODOs
 - Let bazel pull in the pkl executable to be used. Currently, the user must already have pkl installed on their system for these rules to work.
-- Implement [template support](https://pkl-lang.org/main/current/language-tutorial/02_filling_out_a_template.html#amending-templates) into the rule.
