@@ -5,6 +5,9 @@ import subprocess
 import sys
 import argparse
 import logging
+import os
+
+LOGLEVEL = logging.DEBUG
 
 def perform_pkl_transform(pkl_config_path: str, target_format: str, output_path: str):
     args = [
@@ -14,11 +17,18 @@ def perform_pkl_transform(pkl_config_path: str, target_format: str, output_path:
         target_format,
         pkl_config_path,
     ]
+    logging.debug("working directory: {}".format(os.getcwd()))
     logging.debug("pkl transform args: {}".format(' '.join(args)))
     with open(output_path, 'w') as f:
-        subprocess.run(args, stdout=f)
+        subprocess.run(
+            args, 
+            stdout=f,
+            check=True,
+        )
 
 if __name__ == '__main__':
+    logging.basicConfig(level=LOGLEVEL)
+
     parser = argparse.ArgumentParser(description = "pkl transformer")
     # TODO: Add argument for specifying the pkl executable path once the pkl exe is being
     # built by bazel.

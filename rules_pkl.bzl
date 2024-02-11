@@ -1,9 +1,9 @@
 def _pkl_library_impl(ctx):
-  config_template = ctx.actions.declare_file(ctx.file.config.basename + ".templ")
+  config_file = ctx.actions.declare_file(ctx.file.config.basename + ".templ")
 
   # Copy the config file to the sandbox to be used in the pkl generation.
   ctx.actions.expand_template(
-    output = config_template,
+    output = config_file,
     template = ctx.file.config,
   )
 
@@ -18,13 +18,17 @@ def _pkl_library_impl(ctx):
     )
     config_format_outputs.append(config_format_output)
 
+    inputs = [config_file]
+    if ctx.file.template != None:
+      inputs.append(ctx.file.template)
+
     ctx.actions.run(
       executable = ctx.executable.pkl_transform_binary,
       arguments = [
         "--format",
         format,
         "--config_file",
-        config_template.path,
+        config_file.path,
         "--output",
         config_format_output.path,
       ],
@@ -35,13 +39,22 @@ def _pkl_library_impl(ctx):
       # pkl executale to be used.
       use_default_shell_env = True,
       outputs = [config_format_output],
-      inputs = [config_template],
+      inputs = inputs,
     )
 
-  return [DefaultInfo(files = depset(config_format_outputs))]
+  return [DefaultInfo(files = depset(
+        config_format_outputs,
+    ))]
 
+# This should take the template file and pass it through so that it can
+# be used as a dependency in pkl_library.
 def _pkl_template_impl(ctx):
-  pass
+  template = ctx.actions.declare_file(ctx.file.config.basename)
+  ctx.actions.expand_template(
+    output = template,
+    template = ctx.file.config,
+  )
+  return [DefaultInfo(files = depset([template]))]
 
 # Rule for defining a pkl template:
 # https://pkl-lang.org/main/current/language-tutorial/03_writing_a_template.html
@@ -49,6 +62,13 @@ def _pkl_template_impl(ctx):
 # out the templated segments.
 pkl_template = rule(
   implementation = _pkl_template_impl,
+  attrs = {
+    "config": attr.label(
+      allow_single_file = True,
+      mandatory = True,
+      doc = "The pkl template file.",
+    ),
+  },
 )
 
 pkl_library = rule(
@@ -64,6 +84,11 @@ pkl_library = rule(
       mandatory = True,
       doc = "The pkl file to create a library for.",
     ),
+    "template": attr.label(
+      allow_single_file = True,
+      mandatory = False,
+      doc = "The template to use for the pkl config.",
+    ),
     "pkl_transform_binary": attr.label(
       executable = True,
       cfg = "exec",
@@ -71,4 +96,3 @@ pkl_library = rule(
     ),
   },
 )
-
