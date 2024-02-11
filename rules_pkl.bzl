@@ -13,9 +13,6 @@ def _pkl_library_impl(ctx):
     if format in ["json", "yaml", "plist"]:
       ext = "." + format
 
-    # TODO: Set the proper path for the out file otherwise there may be a chance
-    # of pkl files with same name in different directories to overwrite each other,
-    # not too sure if this is true. Need to test it.
     config_format_output = ctx.actions.declare_file(
       ctx.file.config.basename + ext
     )
