@@ -1,12 +1,16 @@
 load("//:rules_pkl.bzl", "pkl_library")
 load("@pip_deps//:requirements.bzl", "requirement")
 
-# TODO: Create an equivalent shell script and replace
-# this py binary so that the pkl transform does not depend
-# on python runtime.
+# TODO: Remove, //:pkl_transform_sh is equivalent implementation.
 py_binary(
     name = "pkl_transform",
     srcs = ["pkl_transform.py"],
+    visibility = ["//visibility:public"],
+)
+
+sh_binary(
+    name = "pkl_transform_sh",
+    srcs = ["pkl_transform.sh"],
     visibility = ["//visibility:public"],
 )
 

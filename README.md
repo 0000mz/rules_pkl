@@ -2,7 +2,7 @@
   <img src="doc/pkl-bazel-logo-long-dark.png#gh-dark-mode-only" height="50px" />
   <img src="doc/pkl-bazel-logo-long.png#gh-light-mode-only" height="50px" />
 </p>
-<p align="center">
+<p align="center" target="_blank">
   <a href = "https://buildkite.com/0000mz-builds/rules-pkl-presubmit">
     <img
       src = "https://badge.buildkite.com/d8abb9a19164641bec0de32f16c145c77919893c9275c5d638.svg?theme=solarized"
