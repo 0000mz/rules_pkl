@@ -2,6 +2,14 @@
   <img src="doc/pkl-bazel-logo-long-dark.png#gh-dark-mode-only" height="50px" />
   <img src="doc/pkl-bazel-logo-long.png#gh-light-mode-only" height="50px" />
 </p>
+<p align="center">
+  <a href = "https://buildkite.com/0000mz-builds/rules-pkl-presubmit">
+    <img
+      src = "https://badge.buildkite.com/d8abb9a19164641bec0de32f16c145c77919893c9275c5d638.svg?theme=solarized"
+      alt = "Build Status"
+    />
+  </a>
+</p>
 
 Bazel rules for Apple's configuration as code language, [pkl](https://github.com/apple/pkl).
 
